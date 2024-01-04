@@ -1,5 +1,6 @@
 package kiosk.domain;
 
+import java.util.Objects;
 import kiosk.domain.menu.Menu;
 
 public class Order {
@@ -30,5 +31,23 @@ public class Order {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Order order = (Order) o;
+        return quantity == order.quantity && Objects.equals(menu, order.menu);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(menu, quantity);
     }
 }

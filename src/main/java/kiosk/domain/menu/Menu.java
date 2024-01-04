@@ -2,6 +2,7 @@ package kiosk.domain.menu;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Menu {
 
@@ -38,5 +39,23 @@ public class Menu {
 
     public List<Option> getOptions() {
         return new ArrayList<>(options);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Menu menu = (Menu) o;
+        return price == menu.price && Objects.equals(name, menu.name) && Objects.equals(description,
+                menu.description) && Objects.equals(options, menu.options);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, price, options);
     }
 }
