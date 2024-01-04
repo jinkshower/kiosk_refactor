@@ -1,4 +1,4 @@
-package kiosk.domain;
+package kiosk.domain.menu;
 
 public enum Category {
 
