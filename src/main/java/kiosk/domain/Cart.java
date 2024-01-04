@@ -7,8 +7,8 @@ public class Cart {
 
     private final List<Order> orders;
 
-    public Cart(List<Order> orders) {
-        this.orders = new ArrayList<>(orders);
+    public Cart() {
+        this.orders = new ArrayList<>();
     }
 
     public int calculateTotalPrice() {
