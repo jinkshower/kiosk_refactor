@@ -43,7 +43,7 @@ class CartTest {
     @DisplayName("Calculate total price")
     @Test
     void test4() {
-        int actual = cart.calculateTotalPrice();
+        double actual = cart.calculateTotalPrice();
 
         assertThat(actual).isEqualTo(5000);
     }

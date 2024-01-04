@@ -11,8 +11,8 @@ public class Cart {
         this.orders = new ArrayList<>();
     }
 
-    public int calculateTotalPrice() {
-        int totalPrice = 0;
+    public double calculateTotalPrice() {
+        double totalPrice = 0;
         for (Order order : orders) {
             totalPrice += order.calculatePrice();
         }

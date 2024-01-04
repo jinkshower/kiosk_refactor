@@ -8,20 +8,27 @@ public class Menu {
 
     private final String name;
     private final String description;
-    private final int price;
+    private final double price;
     private final List<Option> options;
 
-    public Menu(String name, String description, int price, List<Option> options) {
+    public Menu(String name, String description, double price, List<Option> options) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.options = new ArrayList<>(options);
     }
 
-    public Menu(String name, int price) {
+    public Menu(String name, double price) {
         this.name = name;
         this.price = price;
         this.description = "";
+        this.options = new ArrayList<>();
+    }
+
+    public Menu(String name, String description, double price) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
         this.options = new ArrayList<>();
     }
 
@@ -33,7 +40,7 @@ public class Menu {
         return description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

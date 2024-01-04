@@ -1,22 +1,20 @@
 package kiosk.domain.menu;
 
-import java.util.List;
-
 public class Option {
 
-    private final List<String> names;
-    private final int additionalPrice;
+    private final String name;
+    private final double additionalPrice;
 
-    public Option(List<String> names, int additionalPrice) {
-        this.names = names;
+    public Option(String names, double additionalPrice) {
+        this.name = names;
         this.additionalPrice = additionalPrice;
     }
 
-    public List<String> getNames() {
-        return names;
+    public String getName() {
+        return name;
     }
 
-    public int getAdditionalPrice() {
+    public double getAdditionalPrice() {
         return additionalPrice;
     }
 }

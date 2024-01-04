@@ -13,7 +13,7 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public int calculatePrice() {
+    public double calculatePrice() {
         return menu.getPrice() * quantity;
     }
 
@@ -25,7 +25,7 @@ public class Order {
         return menu.getDescription();
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return menu.getPrice();
     }
 
