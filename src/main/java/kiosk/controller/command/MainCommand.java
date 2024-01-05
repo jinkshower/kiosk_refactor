@@ -3,7 +3,7 @@ package kiosk.controller.command;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
-import kiosk.controller.ApplicationStatus;
+import kiosk.data.ApplicationStatus;
 import kiosk.domain.Store;
 
 public class MainCommand implements Command {

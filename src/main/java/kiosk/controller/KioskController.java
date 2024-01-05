@@ -1,6 +1,5 @@
 package kiosk.controller;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +7,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 import kiosk.controller.command.Command;
 import kiosk.controller.command.MainCommand;
+import kiosk.data.ApplicationStatus;
 import kiosk.domain.menu.Category;
 import kiosk.view.InputView;
 import kiosk.view.OutputView;

@@ -10,18 +10,18 @@ public class ScreenData {
 
     private static final int INITIAL_MAIN_INDEX = 1;
 
-    private final Map<ScreenStage, String> screenData = new HashMap<>();
+    private final Map<ApplicationStatus, String> screenData = new HashMap<>();
 
     public ScreenData() {
         initialize();
     }
 
-    public String getScreenData(ScreenStage screenStage) {
-        return screenData.get(screenStage);
+    public String getScreenData(ApplicationStatus applicationStatus) {
+        return screenData.get(applicationStatus);
     }
 
     private void initialize() {
-        screenData.put(ScreenStage.MAIN, numberedMessage(parseCategoryMessage(Category.values())) +                 "\n" +
+        screenData.put(ApplicationStatus.MAIN, numberedMessage(parseCategoryMessage(Category.values())) +                 "\n" +
                 "[ ORDER MENU ]\n" +
                 "5. Order       | 장바구니를 확인 후 주문합니다.\n" +
                 "6. Cancel      | 진행중인 주문을 취소합니다.");
@@ -47,16 +47,5 @@ public class ScreenData {
         }
 
         return categoryMessages;
-    }
-
-    public enum ScreenStage {
-        MAIN,
-        MENU,
-        ORDER,
-        REMENU,
-        DECIDE_ORDER,
-        EXIT,
-        CANCLE,
-        CANCLE_EXIT;
     }
 }

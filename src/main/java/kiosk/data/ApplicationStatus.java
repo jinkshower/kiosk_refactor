@@ -1,4 +1,4 @@
-package kiosk.controller;
+package kiosk.data;
 
 public enum ApplicationStatus {
     MAIN,
