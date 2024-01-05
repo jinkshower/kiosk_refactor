@@ -1,30 +1,34 @@
 package kiosk.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import kiosk.domain.menu.Menu;
 
 public class Cart {
 
-    private final List<Order> orders;
+    private final Map<Order, Integer> orders;
 
     public Cart() {
-        this.orders = new ArrayList<>();
+        this.orders = new HashMap<>();
     }
 
     public double calculateTotalPrice() {
         double totalPrice = 0;
-        for (Order order : orders) {
-            totalPrice += order.calculatePrice();
+        for(Order order : orders.keySet()) {
+            totalPrice += order.calculatePrice() * orders.get(order);
         }
         return totalPrice;
     }
 
-    public List<Order> getOrders() {
-        return new ArrayList<>(orders);
+    public Map<Order, Integer> getOrders() {
+        return new HashMap<>(orders);
     }
 
     public void addOrder(Order order) {
-        orders.add(order);
+        int count = orders.getOrDefault(order ,0);
+        orders.put(order, count + 1);
     }
 
     public void removeOrder(Order order) {

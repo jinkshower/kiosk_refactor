@@ -33,6 +33,6 @@ class StoreTest {
     @DisplayName("can instantiate order from menus")
     @Test
     void test2() {
-        assertDoesNotThrow(() -> new Order(menus.get(1), 1));
+        assertDoesNotThrow(() -> new Order(menus.get(1)));
     }
 }

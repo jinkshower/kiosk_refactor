@@ -15,9 +15,9 @@ class CartTest {
     @BeforeEach
     void setUp() {
         cart = new Cart();
-        cart.addOrder(new Order(new Menu("Burger", 1000), 2));
-        cart.addOrder(new Order(new Menu("Beer", 1500), 2));
-        order = new Order(new Menu("Beer", 1500), 2);
+        cart.addOrder(new Order(new Menu("Burger", 1000)));
+        cart.addOrder(new Order(new Menu("Beer", 1500)));
+        order = new Order(new Menu("Beer", 1500));
     }
 
     @DisplayName("size check")
@@ -45,7 +45,7 @@ class CartTest {
     void test4() {
         double actual = cart.calculateTotalPrice();
 
-        assertThat(actual).isEqualTo(5000);
+        assertThat(actual).isEqualTo(2500);
     }
 
 }
