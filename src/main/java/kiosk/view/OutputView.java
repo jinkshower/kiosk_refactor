@@ -58,4 +58,13 @@ public class OutputView {
                 + "대기번호는 [ 1 ] 번 입니다.\n"
                 + "(3초후 메뉴판으로 돌아갑니다.)");
     }
+
+    public void printCancelMessage() {
+        System.out.println("진행하던 주문을 취소하시겠습니까?\n"
+                + "1. 확인        2. 취소");
+    }
+
+    public void cancelCompletionMessage() {
+        System.out.println("진행하던 주문이 취소되었습니다.");
+    }
 }

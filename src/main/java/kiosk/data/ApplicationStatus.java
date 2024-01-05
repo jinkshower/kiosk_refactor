@@ -7,6 +7,7 @@ public enum ApplicationStatus {
     ADD_CART,
     PURCHASE,
     CART,
+    CANCEL,
     EXIT;
 
     public boolean onProcess() {

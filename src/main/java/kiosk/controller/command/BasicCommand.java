@@ -1,16 +1,16 @@
 package kiosk.controller.command;
 
-public class PurchaseCommand implements Command {
+public class BasicCommand implements Command {
 
     private final int input;
 
-    private PurchaseCommand(int input) {
+    private BasicCommand(int input) {
         this.input = input;
     }
 
-    public static PurchaseCommand of(int input) {
+    public static BasicCommand of(int input) {
         validate(input);
-        return new PurchaseCommand(input);
+        return new BasicCommand(input);
     }
 
     private static void validate(int input) {
