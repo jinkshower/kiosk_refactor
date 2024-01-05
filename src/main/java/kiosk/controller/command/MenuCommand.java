@@ -29,7 +29,7 @@ public class MenuCommand implements Command {
     }
 
     public Menu getChosenMenu() {
-        return menus.get(input);
+        return menus.get(input - 1);
     }
 
     public ApplicationStatus status() {

@@ -1,14 +1,13 @@
 package kiosk.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 import kiosk.controller.command.Command;
 import kiosk.controller.command.MainCommand;
 import kiosk.controller.command.MenuCommand;
 import kiosk.controller.command.OptionCommand;
+import kiosk.controller.command.AddCartCommand;
 import kiosk.data.ApplicationStatus;
 import kiosk.data.OrderDto;
 import kiosk.domain.Cart;
@@ -41,6 +40,7 @@ public class KioskController {
         application.put(ApplicationStatus.MENU, this::menu);
         application.put(ApplicationStatus.CART, this::cart);
         application.put(ApplicationStatus.OPTION, this::option);
+        application.put(ApplicationStatus.PURCHASE, this::purchase);
     }
 
     public ApplicationStatus mainScreen() {
@@ -73,6 +73,19 @@ public class KioskController {
         orderDto.setOption(selected);
 
         return ApplicationStatus.PURCHASE;
+    }
+
+    private ApplicationStatus purchase() {
+        Order order = new Order(orderDto.getMenu(), orderDto.getOption());
+        outputView.printPurchaseMessage(order.formatted());
+
+        AddCartCommand addCartCommand = AddCartCommand.of(inputView.readCommand());
+        if (addCartCommand.granted()) {
+            cart.addOrder(order);
+            outputView.printAddedMessage(order.getName());
+        }
+
+        return ApplicationStatus.MAIN;
     }
 
     private ApplicationStatus cart() {

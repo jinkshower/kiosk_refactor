@@ -20,6 +20,10 @@ public class Option {
         return additionalPrice;
     }
 
+    public String formatted() {
+        return "(" + name + ")";
+    }
+
     @Override
     public boolean equals(Object o) {
 

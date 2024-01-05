@@ -23,14 +23,18 @@ public class Order {
         return menu.getPrice() + chosenOption.getAdditionalPrice();
     }
 
-    public String getName() {
+    public String formatted() {
         String option = "";
         if (menu.hasOption()) {
-            option = chosenOption.getName();
+            option = chosenOption.formatted();
         }
-        return menu.getName() + option;
+        return menu.getName() + option + " | W " +
+                (menu.getPrice() + chosenOption.getAdditionalPrice()) + " | " + menu.getDescription();
     }
 
+    public String getName() {
+        return menu.getName();
+    }
     public String getDescription() {
         return menu.getDescription();
     }

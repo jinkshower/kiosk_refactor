@@ -23,6 +23,6 @@ public class OptionCommand implements Command {
 
     @Override
     public int info() {
-        return input;
+        return input - 1;
     }
 }

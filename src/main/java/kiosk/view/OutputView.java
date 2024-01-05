@@ -30,4 +30,14 @@ public class OutputView {
         System.out.println("위 메뉴의 어떤 옵션으로 추가하시겠습니까?");
         System.out.println(option);
     }
+
+    public void printPurchaseMessage(String message) {
+        System.out.println(message);
+        System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?\n"
+                + "1. 확인        2. 취소");
+    }
+
+    public void printAddedMessage(String name) {
+        System.out.println(name + " 가 장바구니에 추가되었습니다.\n");
+    }
 }
