@@ -1,8 +1,14 @@
 package kiosk.controller;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
+import kiosk.controller.command.Command;
+import kiosk.controller.command.MainCommand;
+import kiosk.domain.menu.Category;
 import kiosk.view.InputView;
 import kiosk.view.OutputView;
 
@@ -11,6 +17,7 @@ public class KioskController {
     private final InputView inputView;
     private final OutputView outputView;
     private final Map<ApplicationStatus, Supplier<ApplicationStatus>> application = new HashMap<>();
+    private final List<Command> commands = new ArrayList<>();
 
     public KioskController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -19,13 +26,27 @@ public class KioskController {
     }
 
     private void initializeApplicationStatus() {
-        application.put(ApplicationStatus.MAIN, this::mainMenu);
+        application.put(ApplicationStatus.MAIN, this::mainScreen);
+        application.put(ApplicationStatus.MENU, this::menu);
+        application.put(ApplicationStatus.CART, this::cart);
     }
 
-    public ApplicationStatus mainMenu() {
+    public ApplicationStatus mainScreen() {
         outputView.printMainMessage();
-        inputView.readMenuCommand();
+        MainCommand mainCommand = MainCommand.of(inputView.readMainCommand());
+        commands.add(mainCommand);
 
+        return mainCommand.status();
+    }
+
+    private ApplicationStatus menu() {
+        System.out.println("menu selected");
+        System.out.println(Category.from(commands.get(0).info()));
+        return ApplicationStatus.EXIT;
+    }
+
+    private ApplicationStatus cart() {
+        System.out.println("cart selected");
         return ApplicationStatus.EXIT;
     }
 

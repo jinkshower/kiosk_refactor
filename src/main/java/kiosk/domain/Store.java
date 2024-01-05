@@ -42,10 +42,36 @@ public class Store {
                                 "루트 비어, 퍼플 카우, 크림시클",
                                 5.9)
                 ));
+        menus.put(Category.DRINK,
+                List.of(new Menu("Shake of the Week",
+                                "특별한 커스터드 플레이버",
+                                6.5),
+                        new Menu("Red Bean Shake",
+                                "신선한 커스터드와 함께 우유와 레드빈이 블렌딩 된 시즈널 쉐이크",
+                                6.5),
+                        new Menu("Floats",
+                                "루트 비어, 퍼플 카우, 크림시클",
+                                5.9)
+                ));
+        menus.put(Category.BEER,
+                List.of(new Menu("Shake of the Week",
+                                "특별한 커스터드 플레이버",
+                                6.5),
+                        new Menu("Red Bean Shake",
+                                "신선한 커스터드와 함께 우유와 레드빈이 블렌딩 된 시즈널 쉐이크",
+                                6.5),
+                        new Menu("Floats",
+                                "루트 비어, 퍼플 카우, 크림시클",
+                                5.9)
+                ));
     }
 
     public static List<Menu> getMenus(Category category) {
         return new ArrayList<>(menus.get(category));
+    }
+
+    public static int size() {
+        return menus.size();
     }
 //  for later use
 //    public static String getFormattedMenus(Category category) {
