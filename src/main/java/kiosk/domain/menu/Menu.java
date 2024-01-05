@@ -52,6 +52,26 @@ public class Menu {
         return new ArrayList<>(options);
     }
 
+    public int optionsCount() {
+        return options.size();
+    }
+
+    public String formatted() {
+        return name + " | W " + price + " | " + description;
+    }
+
+    public String optionMessage() {
+        int index = 1;
+        StringBuilder numbered = new StringBuilder();
+
+        for(Option option : options) {
+            numbered.append(index).append(". ").append(option.getName()).append("(W")
+                    .append(price + option.getAdditionalPrice()).append(")").append("        ");
+            index++;
+        }
+        return numbered.toString();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -24,4 +24,10 @@ public class OutputView {
                 + "아래 상품메뉴판을 보시고 상품을 골라 입력해주세요.");
         System.out.println(message);
     }
+
+    public void printOptionMessage(String message, String option) {
+        System.out.println(message);
+        System.out.println("위 메뉴의 어떤 옵션으로 추가하시겠습니까?");
+        System.out.println(option);
+    }
 }

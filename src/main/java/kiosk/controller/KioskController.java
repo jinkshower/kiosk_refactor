@@ -8,6 +8,7 @@ import java.util.function.Supplier;
 import kiosk.controller.command.Command;
 import kiosk.controller.command.MainCommand;
 import kiosk.controller.command.MenuCommand;
+import kiosk.controller.command.OptionCommand;
 import kiosk.data.ApplicationStatus;
 import kiosk.data.OrderDto;
 import kiosk.domain.Cart;
@@ -15,6 +16,7 @@ import kiosk.domain.Order;
 import kiosk.domain.Store;
 import kiosk.domain.menu.Category;
 import kiosk.domain.menu.Menu;
+import kiosk.domain.menu.Option;
 import kiosk.view.InputView;
 import kiosk.view.OutputView;
 
@@ -38,7 +40,7 @@ public class KioskController {
         application.put(ApplicationStatus.MAIN, this::mainScreen);
         application.put(ApplicationStatus.MENU, this::menu);
         application.put(ApplicationStatus.CART, this::cart);
-//        application.put(ApplicationStatus.OPTION, this::option);
+        application.put(ApplicationStatus.OPTION, this::option);
     }
 
     public ApplicationStatus mainScreen() {
@@ -60,6 +62,17 @@ public class KioskController {
         orderDto.setMenu(menuCommand.getChosenMenu());
 
         return menuCommand.status();
+    }
+
+    private ApplicationStatus option() {
+        Menu chosen = orderDto.getMenu();
+        outputView.printOptionMessage(chosen.formatted(), chosen.optionMessage());
+        OptionCommand optionCommand = OptionCommand.of(inputView.readCommand(), chosen);
+
+        Option selected = chosen.getOptions().get(optionCommand.info());
+        orderDto.setOption(selected);
+
+        return ApplicationStatus.PURCHASE;
     }
 
     private ApplicationStatus cart() {
