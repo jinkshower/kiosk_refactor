@@ -40,4 +40,15 @@ public class OutputView {
     public void printAddedMessage(String name) {
         System.out.println(name + " 가 장바구니에 추가되었습니다.\n");
     }
+
+    public void printCartMessage(String cart, double total) {
+        System.out.println("아래와 같이 주문 하시겠습니까?\n"
+                + "\n"
+                + "[ Orders ]");
+        System.out.println(cart);
+        System.out.println("[ Total ]");
+        System.out.println("W " + total);
+        System.out.println("\n"
+                + "1. 주문      2. 메뉴판");
+    }
 }

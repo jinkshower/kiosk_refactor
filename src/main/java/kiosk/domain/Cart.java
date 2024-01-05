@@ -38,4 +38,13 @@ public class Cart {
     public void clear() {
         orders.clear();
     }
+
+    public String formatted() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(Order order : orders.keySet()) {
+            stringBuilder.append(order.formatted()).append(" | ")
+                    .append(orders.get(order)).append("개");
+        }
+        return stringBuilder.toString();
+    }
 }

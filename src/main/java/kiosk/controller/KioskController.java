@@ -87,7 +87,7 @@ public class KioskController {
     }
 
     private ApplicationStatus cart() {
-        System.out.println("cart selected");
+        outputView.printCartMessage(cart.formatted(), cart.calculateTotalPrice());
         return ApplicationStatus.EXIT;
     }
 
