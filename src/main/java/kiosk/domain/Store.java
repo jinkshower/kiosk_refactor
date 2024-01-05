@@ -47,4 +47,12 @@ public class Store {
     public static List<Menu> getMenus(Category category) {
         return new ArrayList<>(menus.get(category));
     }
+//  for later use
+//    public static String getFormattedMenus(Category category) {
+//        return format(Store.getMenus(category));
+//    }
+//
+//    private static String format(List<Menu> menus) {
+//        return "";
+//    }
 }

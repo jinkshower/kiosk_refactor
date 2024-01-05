@@ -14,6 +14,6 @@ public class KioskController {
     }
 
     public void run() {
-        System.out.println("ran");
+        outputView.printMainMessage();
     }
 }
