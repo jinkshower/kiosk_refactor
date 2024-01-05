@@ -9,6 +9,7 @@ import kiosk.controller.command.Command;
 import kiosk.controller.command.MainCommand;
 import kiosk.controller.command.MenuCommand;
 import kiosk.data.ApplicationStatus;
+import kiosk.data.OrderDto;
 import kiosk.domain.Cart;
 import kiosk.domain.Order;
 import kiosk.domain.Store;
@@ -24,6 +25,7 @@ public class KioskController {
     private final Map<ApplicationStatus, Supplier<ApplicationStatus>> application = new HashMap<>();
     private final Map<ApplicationStatus, Command> commands = new HashMap<>();
     private final Cart cart;
+    private OrderDto orderDto;
 
     public KioskController(InputView inputView, OutputView outputView, Cart cart) {
         this.inputView = inputView;
@@ -43,34 +45,27 @@ public class KioskController {
         outputView.printMainMessage();
         MainCommand mainCommand = MainCommand.of(inputView.readCommand());
         commands.put(ApplicationStatus.MAIN, mainCommand);
-        System.out.println(Store.size());
+
+        Category chosen = Category.from(mainCommand.info());
+        orderDto = new OrderDto(chosen);
 
         return mainCommand.status();
     }
 
     private ApplicationStatus menu() {
-        Category chosen = Category.from(commands.get(ApplicationStatus.MAIN).info());
+        Category chosen = orderDto.getCategory();
         outputView.printMenuMessage(Store.getFormattedMenus(chosen));
         MenuCommand menuCommand = MenuCommand.of(inputView.readCommand(), chosen);
         commands.put(ApplicationStatus.MENU, menuCommand);
-
-//        addMenu(cart, menuCommand.getChosenMenu());
+        orderDto.setMenu(menuCommand.getChosenMenu());
 
         return menuCommand.status();
     }
-
-//    private ApplicationStatus option() {
-//
-//    }
 
     private ApplicationStatus cart() {
         System.out.println("cart selected");
         return ApplicationStatus.EXIT;
     }
-
-//    private void addMenu(Cart cart, Menu Menu) {
-//
-//    }
 
 
     // for running application until exit
