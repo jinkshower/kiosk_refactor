@@ -8,6 +8,7 @@ import kiosk.controller.command.MainCommand;
 import kiosk.controller.command.MenuCommand;
 import kiosk.controller.command.OptionCommand;
 import kiosk.controller.command.AddCartCommand;
+import kiosk.controller.command.PurchaseCommand;
 import kiosk.data.ApplicationStatus;
 import kiosk.data.OrderDto;
 import kiosk.domain.Cart;
@@ -41,6 +42,7 @@ public class KioskController {
         application.put(ApplicationStatus.OPTION, this::option);
         application.put(ApplicationStatus.ADD_CART, this::addCart);
         application.put(ApplicationStatus.CART, this::cart);
+        application.put(ApplicationStatus.PURCHASE, this::purchase);
     }
 
     public ApplicationStatus mainScreen() {
@@ -88,7 +90,22 @@ public class KioskController {
 
     private ApplicationStatus cart() {
         outputView.printCartMessage(cart.formatted(), cart.calculateTotalPrice());
-        return ApplicationStatus.EXIT;
+        PurchaseCommand purchaseCommand = PurchaseCommand.of(inputView.readCommand());
+
+        if (purchaseCommand.granted()) {
+            return ApplicationStatus.PURCHASE;
+        }
+        return ApplicationStatus.MAIN;
+    }
+
+    private ApplicationStatus purchase() {
+        outputView.printCompletionMessage();
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ignored) {}
+
+        return ApplicationStatus.MAIN;
     }
 
 

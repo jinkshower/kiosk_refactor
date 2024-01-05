@@ -51,4 +51,11 @@ public class OutputView {
         System.out.println("\n"
                 + "1. 주문      2. 메뉴판");
     }
+
+    public void printCompletionMessage() {
+        System.out.println("주문이 완료되었습니다!\n"
+                + "\n"
+                + "대기번호는 [ 1 ] 번 입니다.\n"
+                + "(3초후 메뉴판으로 돌아갑니다.)");
+    }
 }
