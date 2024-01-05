@@ -8,6 +8,7 @@ import java.util.function.Supplier;
 import kiosk.controller.command.Command;
 import kiosk.controller.command.MainCommand;
 import kiosk.data.ApplicationStatus;
+import kiosk.domain.Store;
 import kiosk.domain.menu.Category;
 import kiosk.view.InputView;
 import kiosk.view.OutputView;
@@ -17,7 +18,7 @@ public class KioskController {
     private final InputView inputView;
     private final OutputView outputView;
     private final Map<ApplicationStatus, Supplier<ApplicationStatus>> application = new HashMap<>();
-    private final List<Command> commands = new ArrayList<>();
+    private final Map<ApplicationStatus, Command> commands = new HashMap<>();
 
     public KioskController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -34,14 +35,15 @@ public class KioskController {
     public ApplicationStatus mainScreen() {
         outputView.printMainMessage();
         MainCommand mainCommand = MainCommand.of(inputView.readMainCommand());
-        commands.add(mainCommand);
+        commands.put(ApplicationStatus.MAIN, mainCommand);
+        System.out.println(Store.size());
 
         return mainCommand.status();
     }
 
     private ApplicationStatus menu() {
-        System.out.println("menu selected");
-        System.out.println(Category.from(commands.get(0).info()));
+        Category chosen = Category.from(commands.get(ApplicationStatus.MAIN).info());
+        outputView.printMenuMessage(Store.getFormattedMenus(chosen));
         return ApplicationStatus.EXIT;
     }
 

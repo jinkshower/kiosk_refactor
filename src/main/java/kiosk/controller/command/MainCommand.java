@@ -36,7 +36,7 @@ public class MainCommand implements Command {
     }
 
     public ApplicationStatus status() {
-        if (input < Store.size()) {
+        if (input <= Store.size()) {
             return ApplicationStatus.MENU;
         }
         if (input == Store.size() + 1) {

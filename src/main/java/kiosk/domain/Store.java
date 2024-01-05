@@ -43,26 +43,26 @@ public class Store {
                                 5.9)
                 ));
         menus.put(Category.DRINK,
-                List.of(new Menu("Shake of the Week",
-                                "특별한 커스터드 플레이버",
-                                6.5),
-                        new Menu("Red Bean Shake",
-                                "신선한 커스터드와 함께 우유와 레드빈이 블렌딩 된 시즈널 쉐이크",
-                                6.5),
-                        new Menu("Floats",
-                                "루트 비어, 퍼플 카우, 크림시클",
-                                5.9)
+                List.of(new Menu("Shack-made Lemonade",
+                                "매장에서 직접 만드는 상큼한 레몬에이드",
+                                3.9, List.of(new Option("Regular", 0),
+                                                    new Option("Large", 0.6))),
+                        new Menu("Fresh Brewed Iced Tea",
+                                "직접 유기농 홍차를 우려낸 아이스티",
+                                3.4, List.of(new Option("Regular", 0),
+                                                    new Option("Large", 0.5))),
+                        new Menu("Fifty/Fifty",
+                                "레몬에이드와 아이스티의 만남",
+                                3.5, List.of(new Option("Regular", 0),
+                                                    new Option("Large", 0.9)))
                 ));
         menus.put(Category.BEER,
-                List.of(new Menu("Shake of the Week",
-                                "특별한 커스터드 플레이버",
-                                6.5),
-                        new Menu("Red Bean Shake",
-                                "신선한 커스터드와 함께 우유와 레드빈이 블렌딩 된 시즈널 쉐이크",
-                                6.5),
-                        new Menu("Floats",
-                                "루트 비어, 퍼플 카우, 크림시클",
-                                5.9)
+                List.of(new Menu("ShackMeister Ale",
+                                "뉴욕 브루클린 브루어리에서 양조한 에일 맥주",
+                                9.8),
+                        new Menu("Magpie Brewing Co.",
+                                "맥파이 맥주",
+                                6.8)
                 ));
     }
 
@@ -73,12 +73,20 @@ public class Store {
     public static int size() {
         return menus.size();
     }
-//  for later use
-//    public static String getFormattedMenus(Category category) {
-//        return format(Store.getMenus(category));
-//    }
-//
-//    private static String format(List<Menu> menus) {
-//        return "";
-//    }
+
+    public static String getFormattedMenus(Category category) {
+        return format(Store.getMenus(category));
+    }
+
+    private static String format(List<Menu> menus) {
+        int index = 1;
+        StringBuilder numbered = new StringBuilder();
+
+        for(Menu menu: menus) {
+            numbered.append(index).append(". ").append(menu.getName()).append("| W ")
+                    .append(menu.getPrice()).append(" | ").append(menu.getDescription()).append("\n");
+            index++;
+        }
+        return numbered.toString();
+    }
 }
