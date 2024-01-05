@@ -3,8 +3,9 @@ package kiosk.data;
 public enum ApplicationStatus {
     MAIN,
     MENU,
-    PURCHASE,
     OPTION,
+    ADD_CART,
+    PURCHASE,
     CART,
     EXIT;
 

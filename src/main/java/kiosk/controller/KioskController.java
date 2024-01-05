@@ -38,9 +38,9 @@ public class KioskController {
     private void initializeApplicationStatus() {
         application.put(ApplicationStatus.MAIN, this::mainScreen);
         application.put(ApplicationStatus.MENU, this::menu);
-        application.put(ApplicationStatus.CART, this::cart);
         application.put(ApplicationStatus.OPTION, this::option);
-        application.put(ApplicationStatus.PURCHASE, this::purchase);
+        application.put(ApplicationStatus.ADD_CART, this::addCart);
+        application.put(ApplicationStatus.CART, this::cart);
     }
 
     public ApplicationStatus mainScreen() {
@@ -72,10 +72,10 @@ public class KioskController {
         Option selected = chosen.getOptions().get(optionCommand.info());
         orderDto.setOption(selected);
 
-        return ApplicationStatus.PURCHASE;
+        return ApplicationStatus.ADD_CART;
     }
 
-    private ApplicationStatus purchase() {
+    private ApplicationStatus addCart() {
         Order order = new Order(orderDto.getMenu(), orderDto.getOption());
         outputView.printPurchaseMessage(order.formatted());
 

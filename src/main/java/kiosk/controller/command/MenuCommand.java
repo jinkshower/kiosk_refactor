@@ -37,7 +37,7 @@ public class MenuCommand implements Command {
         if(chosen.hasOption()) {
             return ApplicationStatus.OPTION;
         }
-        return ApplicationStatus.PURCHASE;
+        return ApplicationStatus.ADD_CART;
     }
 
     @Override
