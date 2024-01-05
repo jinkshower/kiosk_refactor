@@ -48,17 +48,15 @@ public class KioskController {
         MainCommand mainCommand = MainCommand.of(inputView.readCommand());
         commands.put(ApplicationStatus.MAIN, mainCommand);
 
-        Category chosen = Category.from(mainCommand.info());
-        orderDto = new OrderDto(chosen);
-
         return mainCommand.status();
     }
 
     private ApplicationStatus menu() {
-        Category chosen = orderDto.getCategory();
+        Category chosen = Category.from(commands.get(ApplicationStatus.MAIN).info());
+        orderDto = new OrderDto(chosen);
+
         outputView.printMenuMessage(Store.getFormattedMenus(chosen));
         MenuCommand menuCommand = MenuCommand.of(inputView.readCommand(), chosen);
-        commands.put(ApplicationStatus.MENU, menuCommand);
         orderDto.setMenu(menuCommand.getChosenMenu());
 
         return menuCommand.status();
