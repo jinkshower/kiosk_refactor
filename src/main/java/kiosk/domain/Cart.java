@@ -43,7 +43,7 @@ public class Cart {
         StringBuilder stringBuilder = new StringBuilder();
         for(Order order : orders.keySet()) {
             stringBuilder.append(order.formatted()).append(" | ")
-                    .append(orders.get(order)).append("개");
+                    .append(orders.get(order)).append("개").append("\n");
         }
         return stringBuilder.toString();
     }

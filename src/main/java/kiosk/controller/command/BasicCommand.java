@@ -23,7 +23,6 @@ public class BasicCommand implements Command {
         return input == 1;
     }
 
-
     @Override
     public int info() {
         return input;

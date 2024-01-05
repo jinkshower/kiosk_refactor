@@ -36,7 +36,7 @@ public class MainCommand implements Command {
             return ApplicationStatus.CART;
         }
         if (input == Store.size() + 2) {
-            return ApplicationStatus.CANCLE;
+            return ApplicationStatus.CANCEL;
         }
         return ApplicationStatus.EXIT;
     }
