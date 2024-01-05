@@ -32,6 +32,10 @@ public class Menu {
         this.options = new ArrayList<>();
     }
 
+    public boolean hasOption() {
+        return !options.isEmpty();
+    }
+
     public String getName() {
         return name;
     }

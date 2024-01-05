@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 import kiosk.controller.command.Command;
 import kiosk.controller.command.MainCommand;
+import kiosk.controller.command.MenuCommand;
 import kiosk.data.ApplicationStatus;
 import kiosk.domain.Store;
 import kiosk.domain.menu.Category;
@@ -34,7 +35,7 @@ public class KioskController {
 
     public ApplicationStatus mainScreen() {
         outputView.printMainMessage();
-        MainCommand mainCommand = MainCommand.of(inputView.readMainCommand());
+        MainCommand mainCommand = MainCommand.of(inputView.readCommand());
         commands.put(ApplicationStatus.MAIN, mainCommand);
         System.out.println(Store.size());
 
@@ -44,7 +45,10 @@ public class KioskController {
     private ApplicationStatus menu() {
         Category chosen = Category.from(commands.get(ApplicationStatus.MAIN).info());
         outputView.printMenuMessage(Store.getFormattedMenus(chosen));
-        return ApplicationStatus.EXIT;
+        MenuCommand menuCommand = MenuCommand.of(inputView.readCommand(), chosen);
+        commands.put(ApplicationStatus.MENU, menuCommand);
+
+        return menuCommand.status();
     }
 
     private ApplicationStatus cart() {
