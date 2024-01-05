@@ -9,7 +9,6 @@ import kiosk.domain.Store;
 public class MainCommand implements Command {
 
     private static final int BASIC_COMMANDS = 2;
-    private static final List<Integer> commands = new ArrayList<>();
 
     private final int input;
 
@@ -18,19 +17,13 @@ public class MainCommand implements Command {
     }
 
     public static MainCommand of(int input) {
-        initialize();
         validate(input);
         return new MainCommand(input);
     }
 
-    private static void initialize() {
-        int storeSize = Store.size();
-        IntStream.rangeClosed(1, storeSize + BASIC_COMMANDS)
-                .forEach(commands::add);
-    }
-
     private static void validate(int input) {
-        if (!commands.contains(input)) {
+        int maxInputSize = Store.size() + BASIC_COMMANDS;
+        if (input < 1 || input > maxInputSize) {
             throw new IllegalArgumentException(String.format("[ERROR]올바른 커맨드 입력이 아닙니다. input : " + input));
         }
     }

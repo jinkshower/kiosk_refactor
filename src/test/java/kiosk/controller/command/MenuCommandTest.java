@@ -3,23 +3,25 @@ package kiosk.controller.command;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
+import kiosk.domain.menu.Category;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class MenuCommandTest {
 
     @DisplayName("can instantiate from input")
     @ParameterizedTest
-    @ValueSource(ints = {1, 4, 6})
-    void test(int input) {
-        assertDoesNotThrow(() -> MainCommand.of(input));
+    @CsvSource(value = {"1, BURGER", "2, BEER"})
+    void test(int input, Category category) {
+        assertDoesNotThrow(() -> MenuCommand.of(input, category));
     }
 
-    @DisplayName("throw exception for invalid input")
+    @DisplayName("can instantiate from input")
     @ParameterizedTest
-    @ValueSource(ints = {0, 7})
-    void test2(int input) {
-        assertThatThrownBy(() -> MainCommand.of(input));
+    @CsvSource(value = {"5, BURGER", "3, BEER"})
+    void test2(int input, Category category) {
+        assertThatThrownBy(() -> MenuCommand.of(input, category));
     }
 }

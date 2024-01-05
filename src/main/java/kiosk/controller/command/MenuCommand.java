@@ -1,16 +1,12 @@
 package kiosk.controller.command;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 import kiosk.data.ApplicationStatus;
 import kiosk.domain.Store;
 import kiosk.domain.menu.Category;
 import kiosk.domain.menu.Menu;
 
 public class MenuCommand implements Command {
-
-    private static final List<Integer> commands = new ArrayList<>();
 
     private final int input;
     private final List<Menu> menus;
@@ -22,19 +18,12 @@ public class MenuCommand implements Command {
 
     public static MenuCommand of(int input, Category category) {
         List<Menu> menus = Store.getMenus(category);
-        initialize(category, menus);
-        validate(input);
+        validate(input, menus);
         return new MenuCommand(input, menus);
     }
 
-    private static void initialize(Category category, List<Menu> menus) {
-        int categorySize = menus.size();
-        IntStream.rangeClosed(1, categorySize)
-                .forEach(commands::add);
-    }
-
-    private static void validate(int input) {
-        if (!commands.contains(input)) {
+    private static void validate(int input, List<Menu> menus) {
+        if (input < 1 || input > menus.size()) {
             throw new IllegalArgumentException(String.format("[ERROR] 없는 메뉴 입니다. input:" + input));
         }
     }
