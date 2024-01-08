@@ -16,14 +16,6 @@ public class OrderDto {
         this.option = new Option("", 0);
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public Menu getMenu() {
         return menu;
     }

@@ -3,7 +3,6 @@ package kiosk.controller;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
-import kiosk.controller.command.AddCartCommand;
 import kiosk.controller.command.BasicCommand;
 import kiosk.controller.command.Command;
 import kiosk.controller.command.MainCommand;
@@ -83,8 +82,8 @@ public class KioskController {
         Order order = new Order(orderDto.getMenu(), orderDto.getOption());
         outputView.printPurchaseMessage(order.formatted());
 
-        AddCartCommand addCartCommand = AddCartCommand.of(inputView.readCommand());
-        if (addCartCommand.granted()) {
+        BasicCommand basicCommand = BasicCommand.of(inputView.readCommand());
+        if (basicCommand.granted()) {
             cart.addOrder(order);
             outputView.printAddedMessage(order.getName());
         }

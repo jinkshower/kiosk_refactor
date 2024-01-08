@@ -4,6 +4,8 @@ import kiosk.domain.menu.Menu;
 
 public class OptionCommand implements Command {
 
+    private static final int MIN_COMMAND = 1;
+
     private final int input;
 
     private OptionCommand(int input) {
@@ -16,7 +18,7 @@ public class OptionCommand implements Command {
     }
 
     private static void validate(int input, Menu menu) {
-        if (input < 1 || input > menu.optionsCount()) {
+        if (input < MIN_COMMAND || input > menu.optionsCount()) {
             throw new IllegalArgumentException(String.format("[ERROR] 없는 옵션 입니다. input:" + input));
         }
     }

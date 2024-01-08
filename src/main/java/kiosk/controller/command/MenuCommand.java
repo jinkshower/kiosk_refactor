@@ -8,6 +8,8 @@ import kiosk.domain.menu.Menu;
 
 public class MenuCommand implements Command {
 
+    private static final int MIN_COMMAND = 1;
+
     private final int input;
     private final List<Menu> menus;
 
@@ -23,7 +25,7 @@ public class MenuCommand implements Command {
     }
 
     private static void validate(int input, List<Menu> menus) {
-        if (input < 1 || input > menus.size()) {
+        if (input < MIN_COMMAND || input > menus.size()) {
             throw new IllegalArgumentException(String.format("[ERROR] 없는 메뉴 입니다. input:" + input));
         }
     }

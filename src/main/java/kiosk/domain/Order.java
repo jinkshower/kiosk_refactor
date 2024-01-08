@@ -36,10 +36,6 @@ public class Order {
         return menu.getName();
     }
 
-    public String getDescription() {
-        return menu.getDescription();
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {

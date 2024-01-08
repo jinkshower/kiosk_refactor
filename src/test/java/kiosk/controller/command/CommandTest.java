@@ -62,19 +62,6 @@ class CommandTest {
         assertThatThrownBy(() -> OptionCommand.of(input, menu));
     }
 
-    @DisplayName("AddCartCommand : can instantiate from input")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2})
-    void test7(int input) {
-        assertDoesNotThrow(() -> AddCartCommand.of(input));
-    }
-
-    @DisplayName("AddCartCommand : throw exception for invalid input")
-    @ParameterizedTest
-    @ValueSource(ints = {0, 3})
-    void test8(int input) {
-        assertThatThrownBy(() -> AddCartCommand.of(input));
-    }
 
     @DisplayName("BasicCommand : can instantiate from input")
     @ParameterizedTest

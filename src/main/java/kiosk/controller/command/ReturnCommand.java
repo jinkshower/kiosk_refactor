@@ -2,6 +2,8 @@ package kiosk.controller.command;
 
 public class ReturnCommand implements Command {
 
+    private static final int RETURN = 1;
+
     private final int input;
 
     private ReturnCommand(int input) {
@@ -14,7 +16,7 @@ public class ReturnCommand implements Command {
     }
 
     private static void validate(int input) {
-        if (input != 1) {
+        if (input != RETURN) {
             throw new IllegalArgumentException(String.format("[ERROR] 없는 명령어 입니다. input:" + input));
         }
     }

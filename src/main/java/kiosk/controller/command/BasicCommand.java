@@ -2,6 +2,9 @@ package kiosk.controller.command;
 
 public class BasicCommand implements Command {
 
+    private static final int CONFIRM = 1;
+    private static final int CANCEL = 2;
+
     private final int input;
 
     private BasicCommand(int input) {
@@ -14,13 +17,13 @@ public class BasicCommand implements Command {
     }
 
     private static void validate(int input) {
-        if (input != 1 && input != 2) {
+        if (input != CONFIRM && input != CANCEL) {
             throw new IllegalArgumentException(String.format("[ERROR] 없는 명령어 입니다. input:" + input));
         }
     }
 
     public boolean granted() {
-        return input == 1;
+        return input == CONFIRM;
     }
 
     @Override
