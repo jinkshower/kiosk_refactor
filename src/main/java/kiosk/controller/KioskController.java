@@ -12,6 +12,7 @@ import kiosk.controller.command.BasicCommand;
 import kiosk.data.ApplicationStatus;
 import kiosk.data.OrderDto;
 import kiosk.domain.Cart;
+import kiosk.domain.History;
 import kiosk.domain.Order;
 import kiosk.domain.Store;
 import kiosk.domain.menu.Category;
@@ -101,7 +102,8 @@ public class KioskController {
 
     private ApplicationStatus purchase() {
         outputView.printCompletionMessage();
-
+        History.add(cart.getOrders());
+        cart.clear();
         try {
             Thread.sleep(3000);
         } catch (InterruptedException ignored) {}
