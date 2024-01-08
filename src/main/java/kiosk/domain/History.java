@@ -28,6 +28,14 @@ public class History {
                 .sum();
     }
 
+    public static int size() {
+        return history.size();
+    }
+
+    public static void clear() {
+        history.clear();
+    }
+
     public static String formatted() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Order order : history) {
