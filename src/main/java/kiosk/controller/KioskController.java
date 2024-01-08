@@ -3,12 +3,12 @@ package kiosk.controller;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
+import kiosk.controller.command.AddCartCommand;
+import kiosk.controller.command.BasicCommand;
 import kiosk.controller.command.Command;
 import kiosk.controller.command.MainCommand;
 import kiosk.controller.command.MenuCommand;
 import kiosk.controller.command.OptionCommand;
-import kiosk.controller.command.AddCartCommand;
-import kiosk.controller.command.BasicCommand;
 import kiosk.data.ApplicationStatus;
 import kiosk.data.OrderDto;
 import kiosk.domain.Cart;
@@ -107,7 +107,8 @@ public class KioskController {
         cart.clear();
         try {
             Thread.sleep(3000);
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) {
+        }
 
         return ApplicationStatus.MAIN;
     }

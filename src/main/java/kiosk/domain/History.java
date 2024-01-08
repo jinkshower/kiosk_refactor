@@ -1,7 +1,6 @@
 package kiosk.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +9,7 @@ public class History {
     private static final List<Order> history = new ArrayList<>();
 
     public static void add(Map<Order, Integer> orders) {
-        for(Order order: orders.keySet()) {
+        for (Order order : orders.keySet()) {
             history.addAll(cloneOrder(order, orders.get(order)));
         }
     }

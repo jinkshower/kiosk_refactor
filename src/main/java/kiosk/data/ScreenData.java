@@ -21,7 +21,7 @@ public class ScreenData {
     }
 
     private void initialize() {
-        screenData.put(ApplicationStatus.MAIN, numberedMessage(parseCategoryMessage(Category.values())) +                 "\n" +
+        screenData.put(ApplicationStatus.MAIN, numberedMessage(parseCategoryMessage(Category.values())) + "\n" +
                 "[ ORDER MENU ]\n" +
                 "5. Order       | 장바구니를 확인 후 주문합니다.\n" +
                 "6. Cancel      | 진행중인 주문을 취소합니다.");
@@ -31,7 +31,7 @@ public class ScreenData {
         int index = INITIAL_MAIN_INDEX;
         StringBuilder numbered = new StringBuilder();
 
-        for(String string: strings) {
+        for (String string : strings) {
             numbered.append(index).append(". ").append(string).append("\n");
             index++;
         }
@@ -41,7 +41,7 @@ public class ScreenData {
     private List<String> parseCategoryMessage(Category[] categories) {
         List<String> categoryMessages = new ArrayList<>();
 
-        for(Category category : categories) {
+        for (Category category : categories) {
             String categoryMessage = category.getMessage();
             categoryMessages.add(categoryMessage);
         }

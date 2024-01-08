@@ -73,7 +73,7 @@ public class OutputView {
                 + "현재까지 총 판매된 상품 목록은 아래와 같습니다.\n");
         System.out.println(history);
         System.out.println("[ 총 판매금액 현황 ]\n"
-                + "현재까지 총 판매된 금액은 [ W "+ total + " ] 입니다.\n");
+                + "현재까지 총 판매된 금액은 [ W " + total + " ] 입니다.\n");
         System.out.println("1. 돌아가기");
     }
 }

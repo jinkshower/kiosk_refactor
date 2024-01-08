@@ -15,26 +15,26 @@ public class Store {
     static {
         menus.put(Category.BURGER,
                 List.of(new Menu("ShackBurger",
-                        "토마토, 양상추, 쉑소스가 토핑된 치즈버거",
-                        6.9, List.of(new Option("Single", 0),
-                                           new Option("Double", 3.6))),
+                                "토마토, 양상추, 쉑소스가 토핑된 치즈버거",
+                                6.9, List.of(new Option("Single", 0),
+                                new Option("Double", 3.6))),
                         new Menu("SmokeShakck",
                                 "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거",
                                 8.9, List.of(new Option("Single", 0),
-                                                   new Option("Double", 3.6))),
+                                new Option("Double", 3.6))),
                         new Menu("Shroom Burger",
                                 "몬스터 치즈와 체다 치즈로 속을 채운 베지테리안 버거",
                                 9.4, List.of(new Option("Single", 0),
-                                                   new Option("Double", 3.6))),
+                                new Option("Double", 3.6))),
                         new Menu("Cheeseburger",
                                 "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거",
                                 6.9, List.of(new Option("Single", 0),
-                                                   new Option("Double", 3.6)))
-                        ));
+                                new Option("Double", 3.6)))
+                ));
         menus.put(Category.FROZEN_CUSTARD,
                 List.of(new Menu("Shake of the Week",
-                        "특별한 커스터드 플레이버",
-                        6.5),
+                                "특별한 커스터드 플레이버",
+                                6.5),
                         new Menu("Red Bean Shake",
                                 "신선한 커스터드와 함께 우유와 레드빈이 블렌딩 된 시즈널 쉐이크",
                                 6.5),
@@ -46,15 +46,15 @@ public class Store {
                 List.of(new Menu("Shack-made Lemonade",
                                 "매장에서 직접 만드는 상큼한 레몬에이드",
                                 3.9, List.of(new Option("Regular", 0),
-                                                    new Option("Large", 0.6))),
+                                new Option("Large", 0.6))),
                         new Menu("Fresh Brewed Iced Tea",
                                 "직접 유기농 홍차를 우려낸 아이스티",
                                 3.4, List.of(new Option("Regular", 0),
-                                                    new Option("Large", 0.5))),
+                                new Option("Large", 0.5))),
                         new Menu("Fifty/Fifty",
                                 "레몬에이드와 아이스티의 만남",
                                 3.5, List.of(new Option("Regular", 0),
-                                                    new Option("Large", 0.9)))
+                                new Option("Large", 0.9)))
                 ));
         menus.put(Category.BEER,
                 List.of(new Menu("ShackMeister Ale",
@@ -82,7 +82,7 @@ public class Store {
         int index = 1;
         StringBuilder numbered = new StringBuilder();
 
-        for(Menu menu: menus) {
+        for (Menu menu : menus) {
             numbered.append(index).append(". ").append(menu.getName()).append("| W ")
                     .append(menu.getPrice()).append(" | ").append(menu.getDescription()).append("\n");
             index++;

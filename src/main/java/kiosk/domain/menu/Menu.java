@@ -64,7 +64,7 @@ public class Menu {
         int index = 1;
         StringBuilder numbered = new StringBuilder();
 
-        for(Option option : options) {
+        for (Option option : options) {
             numbered.append(index).append(". ").append(option.getName()).append("(W")
                     .append(price + option.getAdditionalPrice()).append(")").append("        ");
             index++;

@@ -14,7 +14,7 @@ public class InputView {
     private int parseInt(String input) {
         try {
             return Integer.parseInt(input);
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(String.format("[ERROR]숫자만 입력할 수 있습니다. input: " + input));
         }
     }

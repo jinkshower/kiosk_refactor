@@ -1,10 +1,7 @@
 package kiosk.domain;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import kiosk.domain.menu.Menu;
 
 public class Cart {
 
@@ -16,7 +13,7 @@ public class Cart {
 
     public double calculateTotalPrice() {
         double totalPrice = 0;
-        for(Order order : orders.keySet()) {
+        for (Order order : orders.keySet()) {
             totalPrice += order.calculatePrice() * orders.get(order);
         }
         return totalPrice;
@@ -27,7 +24,7 @@ public class Cart {
     }
 
     public void addOrder(Order order) {
-        int count = orders.getOrDefault(order ,0);
+        int count = orders.getOrDefault(order, 0);
         orders.put(order, count + 1);
     }
 
@@ -41,7 +38,7 @@ public class Cart {
 
     public String formatted() {
         StringBuilder stringBuilder = new StringBuilder();
-        for(Order order : orders.keySet()) {
+        for (Order order : orders.keySet()) {
             stringBuilder.append(order.formatted()).append(" | ")
                     .append(orders.get(order)).append("개").append("\n");
         }

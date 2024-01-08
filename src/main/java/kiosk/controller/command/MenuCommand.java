@@ -34,7 +34,7 @@ public class MenuCommand implements Command {
 
     public ApplicationStatus status() {
         Menu chosen = getChosenMenu();
-        if(chosen.hasOption()) {
+        if (chosen.hasOption()) {
             return ApplicationStatus.OPTION;
         }
         return ApplicationStatus.ADD_CART;
