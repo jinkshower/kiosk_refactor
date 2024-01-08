@@ -9,6 +9,7 @@ import kiosk.controller.command.Command;
 import kiosk.controller.command.MainCommand;
 import kiosk.controller.command.MenuCommand;
 import kiosk.controller.command.OptionCommand;
+import kiosk.controller.command.ReturnCommand;
 import kiosk.data.ApplicationStatus;
 import kiosk.data.OrderDto;
 import kiosk.domain.Cart;
@@ -128,7 +129,8 @@ public class KioskController {
         double total = History.totalPrice();
         String history = History.formatted();
         outputView.historyMessage(total, history);
-        inputView.readCommand();
+
+        ReturnCommand returnCommand = ReturnCommand.of(inputView.readCommand());
 
         return ApplicationStatus.MAIN;
     }
