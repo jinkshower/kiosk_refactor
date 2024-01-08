@@ -23,12 +23,15 @@ public class MainCommand implements Command {
 
     private static void validate(int input) {
         int maxInputSize = Store.size() + BASIC_COMMANDS;
-        if (input < 1 || input > maxInputSize) {
+        if (input < 0 || input > maxInputSize) {
             throw new IllegalArgumentException(String.format("[ERROR]올바른 커맨드 입력이 아닙니다. input : " + input));
         }
     }
 
     public ApplicationStatus status() {
+        if (input == 0) {
+            return ApplicationStatus.HISTORY;
+        }
         if (input <= Store.size()) {
             return ApplicationStatus.MENU;
         }

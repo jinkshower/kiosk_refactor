@@ -67,4 +67,13 @@ public class OutputView {
     public void cancelCompletionMessage() {
         System.out.println("진행하던 주문이 취소되었습니다.");
     }
+
+    public void historyMessage(double total, String history) {
+        System.out.println("[ 총 판매상품 목록 현황 ]\n"
+                + "현재까지 총 판매된 상품 목록은 아래와 같습니다.\n");
+        System.out.println(history);
+        System.out.println("[ 총 판매금액 현황 ]\n"
+                + "현재까지 총 판매된 금액은 [ W "+ total + " ] 입니다.\n");
+        System.out.println("1. 돌아가기");
+    }
 }

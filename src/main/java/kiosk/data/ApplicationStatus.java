@@ -8,7 +8,8 @@ public enum ApplicationStatus {
     PURCHASE,
     CART,
     CANCEL,
-    EXIT;
+    EXIT,
+    HISTORY;
 
     public boolean onProcess() {
         return this != EXIT;

@@ -45,6 +45,7 @@ public class KioskController {
         application.put(ApplicationStatus.CART, this::cart);
         application.put(ApplicationStatus.PURCHASE, this::purchase);
         application.put(ApplicationStatus.CANCEL, this::cancel);
+        application.put(ApplicationStatus.HISTORY, this::history);
     }
 
     public ApplicationStatus mainScreen() {
@@ -119,6 +120,15 @@ public class KioskController {
             cart.clear();
             outputView.cancelCompletionMessage();
         }
+        return ApplicationStatus.MAIN;
+    }
+
+    private ApplicationStatus history() {
+        double total = History.totalPrice();
+        String history = History.formatted();
+        outputView.historyMessage(total, history);
+        inputView.readCommand();
+
         return ApplicationStatus.MAIN;
     }
 
