@@ -18,10 +18,11 @@ Java로 구현한 Shake Shack Burger 키오스크
  - [x] 화면에 출력 되지 않은 숫자 이외의 입력은 허용 하지 않는다
 
 
-## To do
+## refactoring list
 
-1. ScreenData 클래스의 메인화면 String 만들기 기능 객체로 옮기기
-2. OrderDto, Menu클래스 default 값 + 생성자 여러개 말고 다른 만들 방법 찾기
-3. KioskController 책임 분리(Service? other controllers?)
-4. static한 store, history 개선
-5. 요구사항에 맞게 출력값 조정
+ -[ ] ScreenData 클래스의 메인화면 String 만들기 기능 객체로 옮기기
+ -[ ] OrderDto Optional 적용
+ -[ ] Menu class builder pattern 적용
+ -[ ] KioskService로 도메인 호출 로직 옮기기
+ -[ ] static한 store, history 개선
+ -[ ] 요구사항에 맞게 출력값 조정
