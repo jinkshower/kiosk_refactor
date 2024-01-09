@@ -2,8 +2,6 @@ package kiosk.controller;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.function.Supplier;
 import kiosk.controller.command.BasicCommand;
 import kiosk.controller.command.Command;
@@ -83,7 +81,8 @@ public class KioskController {
     }
 
     private ApplicationStatus addCart() {
-        Order order = new Order(orderDto.getMenu().orElseThrow(), orderDto.getOption().orElseThrow());
+        Order order = new Order(orderDto.getMenu().orElseThrow(),
+                orderDto.getOption().orElse(new Option("", 0)));
         outputView.printPurchaseMessage(order.formatted());
 
         BasicCommand basicCommand = BasicCommand.of(inputView.readCommand());

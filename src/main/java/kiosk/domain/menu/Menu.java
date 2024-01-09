@@ -3,6 +3,7 @@ package kiosk.domain.menu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import kiosk.domain.Store;
 
 public class Menu {
 
@@ -24,6 +25,12 @@ public class Menu {
 
     public String getName() {
         return name;
+    }
+
+    public String paddedName() {
+        int longest = Store.longestNameLength();
+        String pad = " ";
+        return getName() + pad.repeat(longest - getName().length());
     }
 
     public String getDescription() {

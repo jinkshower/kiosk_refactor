@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import kiosk.domain.menu.Category;
 import kiosk.domain.menu.Menu;
 import kiosk.domain.menu.Option;
@@ -82,6 +83,14 @@ public class Store {
         return menus.size();
     }
 
+    public static int longestNameLength() {
+        return menus.keySet().stream()
+                .flatMap(category -> getMenus(category).stream())
+                .mapToInt(menu -> menu.getName().length())
+                .max()
+                .orElse(0);
+    }
+
     public static String getFormattedMenus(Category category) {
         return format(Store.getMenus(category));
     }
@@ -91,7 +100,7 @@ public class Store {
         StringBuilder numbered = new StringBuilder();
 
         for (Menu menu : menus) {
-            numbered.append(index).append(". ").append(menu.getName()).append("| W ")
+            numbered.append(index).append(". ").append(menu.paddedName()).append("| W ")
                     .append(menu.getPrice()).append(" | ").append(menu.getDescription()).append("\n");
             index++;
         }

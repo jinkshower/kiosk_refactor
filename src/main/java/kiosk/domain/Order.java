@@ -28,12 +28,12 @@ public class Order {
         if (menu.hasOption()) {
             option = chosenOption.formatted();
         }
-        return menu.getName() + option + " | W " +
+        return menu.paddedName() + option + " | W " +
                 (menu.getPrice() + chosenOption.getAdditionalPrice()) + " | " + menu.getDescription();
     }
 
     public String getName() {
-        return menu.getName();
+        return menu.paddedName();
     }
 
     @Override
