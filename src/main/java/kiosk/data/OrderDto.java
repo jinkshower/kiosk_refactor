@@ -1,5 +1,6 @@
 package kiosk.data;
 
+import java.util.Optional;
 import kiosk.domain.menu.Category;
 import kiosk.domain.menu.Menu;
 import kiosk.domain.menu.Option;
@@ -12,20 +13,20 @@ public class OrderDto {
 
     public OrderDto(Category category) {
         this.category = category;
-        this.menu = new Menu("", 0);
-        this.option = new Option("", 0);
+        this.menu = null;
+        this.option = null;
     }
 
-    public Menu getMenu() {
-        return menu;
+    public Optional<Menu> getMenu() {
+        return Optional.ofNullable(menu);
     }
 
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
 
-    public Option getOption() {
-        return option;
+    public Optional<Option> getOption() {
+        return Optional.ofNullable(option);
     }
 
     public void setOption(Option option) {
