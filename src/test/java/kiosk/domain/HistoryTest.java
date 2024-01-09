@@ -10,31 +10,27 @@ import org.junit.jupiter.api.Test;
 
 class HistoryTest {
 
-    private Cart cart;
+    private History history;
 
     @BeforeEach
     void setUp() {
-        cart = new Cart();
+        Cart cart = new Cart();
+        history = new History();
         cart.addOrder(new Order(new Menu.Builder("Burger", 1000).build()));
         cart.addOrder(new Order(new Menu.Builder("Beer", 1500).build()));
         cart.addOrder(new Order(new Menu.Builder("Burger", 1000).build()));
-        History.add(cart.getOrders());
+        history.add(cart.getOrders());
     }
 
     @DisplayName("can add orders")
     @Test
     void test() {
-        assertThat(History.size()).isEqualTo(3);
+        assertThat(history.size()).isEqualTo(3);
     }
 
     @DisplayName("can calculate total price")
     @Test
     void test2() {
-        assertThat(History.totalPrice()).isEqualTo(3500);
-    }
-
-    @AfterEach
-    void clear() {
-        History.clear();
+        assertThat(history.totalPrice()).isEqualTo(3500);
     }
 }

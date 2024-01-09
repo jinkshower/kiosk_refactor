@@ -30,12 +30,14 @@ public class KioskController {
     private final Map<ApplicationStatus, Supplier<ApplicationStatus>> application = new HashMap<>();
     private final Map<ApplicationStatus, Command> commands = new HashMap<>();
     private final Cart cart;
+    private final History history;
     private OrderDto orderDto;
 
-    public KioskController(InputView inputView, OutputView outputView, Cart cart) {
+    public KioskController(InputView inputView, OutputView outputView, Cart cart, History history) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.cart = cart;
+        this.history = history;
         initializeApplicationStatus();
     }
 
@@ -105,7 +107,7 @@ public class KioskController {
 
     private ApplicationStatus purchase() {
         outputView.printCompletionMessage();
-        History.add(cart.getOrders());
+        history.add(cart.getOrders());
         cart.clear();
         try {
             Thread.sleep(3000);
@@ -127,9 +129,9 @@ public class KioskController {
     }
 
     private ApplicationStatus history() {
-        double total = History.totalPrice();
-        String history = History.formatted();
-        outputView.historyMessage(total, history);
+        double total = history.totalPrice();
+        String historyMessage = history.formatted();
+        outputView.historyMessage(total, historyMessage);
 
         ReturnCommand returnCommand = ReturnCommand.of(inputView.readCommand());
 

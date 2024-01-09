@@ -6,15 +6,19 @@ import java.util.Map;
 
 public class History {
 
-    private static final List<Order> history = new ArrayList<>();
+    private final List<Order> history;
 
-    public static void add(Map<Order, Integer> orders) {
+    public History() {
+        this.history = new ArrayList<>();
+    }
+
+    public void add(Map<Order, Integer> orders) {
         for (Order order : orders.keySet()) {
             history.addAll(cloneOrder(order, orders.get(order)));
         }
     }
 
-    private static List<Order> cloneOrder(Order order, int count) {
+    private List<Order> cloneOrder(Order order, int count) {
         List<Order> cloned = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             cloned.add(order);
@@ -22,21 +26,21 @@ public class History {
         return cloned;
     }
 
-    public static double totalPrice() {
+    public double totalPrice() {
         return history.stream()
                 .mapToDouble(Order::calculatePrice)
                 .sum();
     }
 
-    public static int size() {
+    public int size() {
         return history.size();
     }
 
-    public static void clear() {
+    public void clear() {
         history.clear();
     }
 
-    public static String formatted() {
+    public String formatted() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Order order : history) {
             stringBuilder.append("- ").append(order.getName())

@@ -24,5 +24,5 @@ Java로 구현한 Shake Shack Burger 키오스크
  -[x] OrderDto Optional 적용
  -[x] Menu class builder pattern 적용
  -[ ] KioskService로 도메인 호출 로직 옮기기
- -[ ] static한 store, history 개선
+ -[x] static한 store, history 개선
  -[ ] 요구사항에 맞게 출력값 조정
