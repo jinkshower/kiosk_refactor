@@ -20,8 +20,8 @@ Java로 구현한 Shake Shack Burger 키오스크
 
 ## refactoring list
 
- -[x] ScreenData 클래스의 메인화면 String 만들기 기능 객체로 옮기기
- -[x] OrderDto Optional 적용
- -[x] Menu class builder pattern 적용
- -[x] static한 store, history 개선
- -[x] 요구사항에 맞게 출력값 조정
+ - [x] ScreenData 클래스의 메인화면 String 만들기 기능 객체로 옮기기   
+ - [x] OrderDto Optional 적용   
+ - [x] Menu class builder pattern 적용   
+ - [x] static한 history 개선   
+ - [x] 요구사항에 맞게 출력값 조정   
