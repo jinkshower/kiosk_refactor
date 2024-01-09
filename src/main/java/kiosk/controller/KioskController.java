@@ -49,7 +49,7 @@ public class KioskController {
     }
 
     public ApplicationStatus mainScreen() {
-        outputView.printMainMessage();
+        outputView.printMainMessage(Category.formatted());
         MainCommand mainCommand = MainCommand.of(inputView.readCommand());
         commands.put(ApplicationStatus.MAIN, mainCommand);
 

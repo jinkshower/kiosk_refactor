@@ -1,22 +1,16 @@
 package kiosk.view;
 
-import kiosk.data.ApplicationStatus;
-import kiosk.data.ScreenData;
-
 public class OutputView {
 
-    private final ScreenData screenData = new ScreenData();
-
-    private void printScreenData(ApplicationStatus applicationStatus) {
-        System.out.println(screenData.getScreenData(applicationStatus));
-    }
-
-    public void printMainMessage() {
+    public void printMainMessage(String categories) {
         System.out.println("\"SHAKESHACK BURGER 에 오신걸 환영합니다.\"\n"
                 + "아래 메뉴판을 보시고 메뉴를 골라 입력해주세요.\n"
                 + "\n"
                 + "[ SHAKESHACK MENU ]");
-        printScreenData(ApplicationStatus.MAIN);
+        System.out.println(categories);
+        System.out.println("[ ORDER MENU ]\n"
+                + "5. Order       | 장바구니를 확인 후 주문합니다.\n"
+                + "6. Cancel      | 진행중인 주문을 취소합니다.");
     }
 
     public void printMenuMessage(String message) {
