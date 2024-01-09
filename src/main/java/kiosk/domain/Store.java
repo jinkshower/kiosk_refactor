@@ -14,55 +14,63 @@ public class Store {
 
     static {
         menus.put(Category.BURGER,
-                List.of(new Menu("ShackBurger",
-                                "토마토, 양상추, 쉑소스가 토핑된 치즈버거",
-                                6.9, List.of(new Option("Single", 0),
-                                new Option("Double", 3.6))),
-                        new Menu("SmokeShakck",
-                                "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거",
-                                8.9, List.of(new Option("Single", 0),
-                                new Option("Double", 3.6))),
-                        new Menu("Shroom Burger",
-                                "몬스터 치즈와 체다 치즈로 속을 채운 베지테리안 버거",
-                                9.4, List.of(new Option("Single", 0),
-                                new Option("Double", 3.6))),
-                        new Menu("Cheeseburger",
-                                "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거",
-                                6.9, List.of(new Option("Single", 0),
-                                new Option("Double", 3.6)))
+                List.of(new Menu.Builder("ShackBurger", 6.9)
+                                .description("토마토, 양상추, 쉑소스가 토핑된 치즈버거")
+                                .options(List.of(new Option("Single", 0),
+                                        new Option("Double", 3.6)))
+                                .build(),
+                        new Menu.Builder("SmokeShakck", 8.9)
+                                .description("토마토, 양상추, 쉑소스가 토핑된 치즈버거")
+                                .options(List.of(new Option("Single", 0),
+                                        new Option("Double", 3.6)))
+                                .build(),
+                        new Menu.Builder("Shroom Burger", 9.4)
+                                .description("몬스터 치즈와 체다 치즈로 속을 채운 베지테리안 버거")
+                                .options(List.of(new Option("Single", 0),
+                                        new Option("Double", 3.6)))
+                                .build(),
+                        new Menu.Builder("Cheeseburger", 6.9)
+                                .description("포테이토 번과 비프패티, 치즈가 토핑된 치즈버거")
+                                .options(List.of(new Option("Single", 0),
+                                        new Option("Double", 3.6)))
+                                .build()
                 ));
         menus.put(Category.FROZEN_CUSTARD,
-                List.of(new Menu("Shake of the Week",
-                                "특별한 커스터드 플레이버",
-                                6.5),
-                        new Menu("Red Bean Shake",
-                                "신선한 커스터드와 함께 우유와 레드빈이 블렌딩 된 시즈널 쉐이크",
-                                6.5),
-                        new Menu("Floats",
-                                "루트 비어, 퍼플 카우, 크림시클",
-                                5.9)
+                List.of(new Menu.Builder("Shake of the Week", 6.5)
+                                .description("특별한 커스터드 플레이버")
+                                .build(),
+                        new Menu.Builder("Red Bean Shake", 6.5)
+                                .description("신선한 커스터드와 함께 우유와 레드빈이 블렌딩 된 시즈널 쉐이크")
+                                .build(),
+                        new Menu.Builder("Floats", 5.9)
+                                .description("루트 비어, 퍼플 카우, 크림시클")
+                                .build()
                 ));
         menus.put(Category.DRINK,
-                List.of(new Menu("Shack-made Lemonade",
-                                "매장에서 직접 만드는 상큼한 레몬에이드",
-                                3.9, List.of(new Option("Regular", 0),
-                                new Option("Large", 0.6))),
-                        new Menu("Fresh Brewed Iced Tea",
-                                "직접 유기농 홍차를 우려낸 아이스티",
-                                3.4, List.of(new Option("Regular", 0),
-                                new Option("Large", 0.5))),
-                        new Menu("Fifty/Fifty",
-                                "레몬에이드와 아이스티의 만남",
-                                3.5, List.of(new Option("Regular", 0),
-                                new Option("Large", 0.9)))
+                List.of(new Menu.Builder("Shack-made Lemonade", 3.9)
+                                .description("매장에서 직접 만드는 상큼한 레몬에이드")
+                                .options(List.of(new Option("Regular", 0),
+                                        new Option("Large", 0.6)))
+                                .build(),
+                        new Menu.Builder("Fresh Brewed Iced Tea", 3.4)
+                                .description("직접 유기농 홍차를 우려낸 아이스티")
+                                .options(List.of(new Option("Regular", 0),
+                                        new Option("Large", 0.5)))
+                                .build(),
+                        new Menu.Builder("Fifty/Fifty", 3.5)
+                                .description("레몬에이드와 아이스티의 만남")
+                                .options(List.of(new Option("Regular", 0),
+                                                new Option("Large", 0.9)))
+                                .build()
                 ));
         menus.put(Category.BEER,
-                List.of(new Menu("ShackMeister Ale",
-                                "뉴욕 브루클린 브루어리에서 양조한 에일 맥주",
-                                9.8),
-                        new Menu("Magpie Brewing Co.",
-                                "맥파이 맥주",
-                                6.8)
+                List.of(
+                        new Menu.Builder("ShackMeister Ale", 9.8)
+                                .description("뉴욕 브루클린 브루어리에서 양조한 에일 맥주")
+                                .build(),
+                        new Menu.Builder("Magpie Brewing Co.", 6.8)
+                                .description("맥파이 맥주")
+                                .build()
                 ));
     }
 

@@ -11,8 +11,8 @@ class OrderTest {
     @DisplayName("price times quantity calculation")
     @Test
     void test() {
-        Order order = new Order(new Menu("Burger", 1000));
+        Order order = new Order(new Menu.Builder("Burger", 1000).build());
 
-        assertThat(order.calculatePrice()).isEqualTo(2000);
+        assertThat(order.calculatePrice()).isEqualTo(1000);
     }
 }

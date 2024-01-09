@@ -15,9 +15,9 @@ class HistoryTest {
     @BeforeEach
     void setUp() {
         cart = new Cart();
-        cart.addOrder(new Order(new Menu("Burger", 1000)));
-        cart.addOrder(new Order(new Menu("Beer", 1500)));
-        cart.addOrder(new Order(new Menu("Burger", 1000)));
+        cart.addOrder(new Order(new Menu.Builder("Burger", 1000).build()));
+        cart.addOrder(new Order(new Menu.Builder("Beer", 1500).build()));
+        cart.addOrder(new Order(new Menu.Builder("Burger", 1000).build()));
         History.add(cart.getOrders());
     }
 

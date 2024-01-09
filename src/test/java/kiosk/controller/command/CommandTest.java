@@ -15,10 +15,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class CommandTest {
 
-    private final Menu menu = new Menu("ShackBurger",
-            "토마토, 양상추, 쉑소스가 토핑된 치즈버거",
-            6.9, List.of(new Option("Single", 0),
-            new Option("Double", 3.6)));
+    private final Menu menu = new Menu.Builder("ShackBurger", 6.9)
+            .description("토마토, 양상추, 쉑소스가 토핑된 치즈버거")
+            .options(List.of(new Option("Single", 0),
+                    new Option("Double", 3.6)))
+            .build();
 
     @DisplayName("MainCommand : can instantiate from input")
     @ParameterizedTest

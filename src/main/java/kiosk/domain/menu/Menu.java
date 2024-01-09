@@ -11,25 +11,11 @@ public class Menu {
     private final double price;
     private final List<Option> options;
 
-    public Menu(String name, String description, double price, List<Option> options) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.options = new ArrayList<>(options);
-    }
-
-    public Menu(String name, double price) {
-        this.name = name;
-        this.price = price;
-        this.description = "";
-        this.options = new ArrayList<>();
-    }
-
-    public Menu(String name, String description, double price) {
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.options = new ArrayList<>();
+    private Menu(Builder builder) {
+        this.name = builder.name;
+        this.description = builder.description;
+        this.price = builder.price;
+        this.options = builder.options;
     }
 
     public boolean hasOption() {
@@ -88,5 +74,33 @@ public class Menu {
     @Override
     public int hashCode() {
         return Objects.hash(name, description, price, options);
+    }
+
+    public static class Builder {
+
+        private final String name;
+        private final double price;
+
+        private String description = "";
+        private List<Option> options = new ArrayList<>();
+
+        public Builder(String name, double price) {
+            this.name = name;
+            this.price = price;
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder options(List<Option> options) {
+            this.options = new ArrayList<>(options);
+            return this;
+        }
+
+        public Menu build() {
+            return new Menu(this);
+        }
     }
 }
