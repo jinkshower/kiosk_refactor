@@ -5,13 +5,13 @@ import kiosk.domain.menu.Category;
 import kiosk.domain.menu.Menu;
 import kiosk.domain.menu.Option;
 
-public class OrderDto {
+public class OrderInformation {
 
     private Category category;
     private Menu menu;
     private Option option;
 
-    public OrderDto(Category category) {
+    public OrderInformation(Category category) {
         this.category = category;
         this.menu = null;
         this.option = null;

@@ -10,7 +10,7 @@ import kiosk.controller.command.MenuCommand;
 import kiosk.controller.command.OptionCommand;
 import kiosk.controller.command.ReturnCommand;
 import kiosk.data.ApplicationStatus;
-import kiosk.data.OrderDto;
+import kiosk.data.OrderInformation;
 import kiosk.domain.Cart;
 import kiosk.domain.History;
 import kiosk.domain.Order;
@@ -29,7 +29,7 @@ public class KioskController {
     private final Map<ApplicationStatus, Command> commands = new HashMap<>();
     private final Cart cart;
     private final History history;
-    private OrderDto orderDto;
+    private OrderInformation orderInformation;
 
     public KioskController(InputView inputView, OutputView outputView, Cart cart, History history) {
         this.inputView = inputView;
@@ -60,29 +60,28 @@ public class KioskController {
 
     private ApplicationStatus menu() {
         Category chosen = Category.from(commands.get(ApplicationStatus.MAIN).info());
-        orderDto = new OrderDto(chosen);
+        orderInformation = new OrderInformation(chosen);
 
         outputView.printMenuMessage(Store.getFormattedMenus(chosen));
         MenuCommand menuCommand = MenuCommand.of(inputView.readCommand(), chosen);
-        orderDto.setMenu(menuCommand.getChosenMenu());
+        orderInformation.setMenu(menuCommand.getChosenMenu());
 
         return menuCommand.status();
     }
 
     private ApplicationStatus option() {
-        Menu chosen = orderDto.getMenu().orElseThrow();
+        Menu chosen = orderInformation.getMenu().orElseThrow();
         outputView.printOptionMessage(chosen.formatted(), chosen.optionMessage());
         OptionCommand optionCommand = OptionCommand.of(inputView.readCommand(), chosen);
 
         Option selected = chosen.getOptions().get(optionCommand.info());
-        orderDto.setOption(selected);
+        orderInformation.setOption(selected);
 
         return ApplicationStatus.ADD_CART;
     }
 
     private ApplicationStatus addCart() {
-        Order order = new Order(orderDto.getMenu().orElseThrow(),
-                orderDto.getOption().orElse(new Option("", 0)));
+        Order order = new Order(orderInformation);
         outputView.printPurchaseMessage(order.formatted());
 
         BasicCommand basicCommand = BasicCommand.of(inputView.readCommand());

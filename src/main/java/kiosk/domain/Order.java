@@ -1,6 +1,7 @@
 package kiosk.domain;
 
 import java.util.Objects;
+import kiosk.data.OrderInformation;
 import kiosk.domain.menu.Menu;
 import kiosk.domain.menu.Option;
 
@@ -17,6 +18,11 @@ public class Order {
     public Order(Menu menu) {
         this.menu = menu;
         this.chosenOption = new Option("", 0);
+    }
+
+    public Order(OrderInformation orderInformation) {
+        this.menu = orderInformation.getMenu().get();
+        this.chosenOption = orderInformation.getOption().get();
     }
 
     public double calculatePrice() {
