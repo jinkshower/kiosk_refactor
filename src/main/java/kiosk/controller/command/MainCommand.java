@@ -28,14 +28,11 @@ public class MainCommand implements Command {
     public ApplicationStatus status() {
         if (input == 0) {
             return ApplicationStatus.HISTORY;
-        }
-        if (input <= Store.size()) {
+        } else if (input <= Store.size()) {
             return ApplicationStatus.MENU;
-        }
-        if (input == Store.size() + 1) {
+        } else if (input == Store.size() + 1) {
             return ApplicationStatus.CART;
-        }
-        if (input == Store.size() + 2) {
+        } else if (input == Store.size() + 2) {
             return ApplicationStatus.CANCEL;
         }
         return ApplicationStatus.EXIT;

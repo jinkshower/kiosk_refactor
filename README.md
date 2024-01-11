@@ -28,6 +28,6 @@ Java로 구현한 Shake Shack Burger 키오스크
 
 ## feedback list
 
-- [ ] Maincommand 분기문 if-else if, history 변수명 복수로
+- [x] Maincommand 분기문 if-else if, history 변수명 복수로
 - [ ] OrderDto 변경 후 order 생성자에 주입
 - [ ] ApplicationStatus, Commands 객체화
